@@ -1,4 +1,4 @@
-### This is a repository to try "morphological analysis" on Python.
+### This is a repository to try "morphological analysis" with MeCab on Python.
 
 # Environment
 * Python3.6
