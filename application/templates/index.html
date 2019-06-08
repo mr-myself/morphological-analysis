@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" style="padding: 50px;">
+    <div style="margin-bottom: 30px;">
+      <h2 style="color: #ee6e73;">Analyze a sentence with MeCab.</h2>
+    </div>
+
+    <form action="/analyze" method="POST" class="form">
+      <div class="form-group">
+        <textarea name="text" class="form-control" rows="4" cols="50" placeholder="Let's type a sentence you would like to analyze.">{{ target }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">analyze</button>
+    </form>
+
+    <div style="margin-top: 50px; margin-bottom: 30px;">
+      {% if result|length > 0 %}
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Word</th>
+              <th scope="col">Parts of speech</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for word, pos in result %}
+              <tr>
+                <td>{{ word }}</td>
+                <td>{{ pos }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+  </div>
+</body>
+
+</html>

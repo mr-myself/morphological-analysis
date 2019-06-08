@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./application
+      dockerfile: "Dockerfile"
+    ports:
+      - "5000:5000"
+    tty: true
+    volumes:
+      - ./application:/app/application
+    environment:
+      TZ: "Asia/Tokyo"
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    ports:
+      - "4231:80"
+    environment:
+      TZ: "Asia/Tokyo"
