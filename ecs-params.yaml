@@ -1,0 +1,9 @@
+ersion: 1
+task_definition:
+  services:
+    app:
+      essential: true
+      mem_limit: 500MB
+    nginx:
+      links: app
+      mem_limit: 200MB

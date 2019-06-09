@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    image: mr10myself/morphological-analysis:latest
+    ports:
+      - "5000:5000"
+    tty: true
+    environment:
+      TZ: "Asia/Tokyo"
+  nginx:
+    image: mr10myself/morphological-analysis-nginx:latest
+    links:
+      - app
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    environment:
+      TZ: "Asia/Tokyo"

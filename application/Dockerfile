@@ -33,8 +33,8 @@ RUN pip install mecab-python3
 ENV APP_DIR=/app/application
 RUN mkdir -p $APP_DIR
 
-ADD requirements.txt $APP_DIR
 WORKDIR $APP_DIR
+COPY . $APP_DIR
 
 RUN pip install -r requirements.txt
 
